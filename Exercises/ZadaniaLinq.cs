@@ -105,12 +105,7 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie06_CzyWszyscyProwadzacyMajaKatedre()
     {
-        var lecturersCount = DaneUczelni.Prowadzacy.Count();
-        var hasCathedral = DaneUczelni.Prowadzacy.Count(p => p.Katedra != "");
-
-        // Console.Write($"{lecturersCount}, {hasCathedral}");
-        
-        return lecturersCount == hasCathedral ? ["1"] : ["0"];
+        return DaneUczelni.Prowadzacy.All(p => !string.IsNullOrEmpty(p.Katedra)) ? ["1"] : ["0"];
     }
 
     /// <summary>
